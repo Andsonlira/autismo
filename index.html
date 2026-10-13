@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inclusão Atípica - Loja Temática Autismo & Moda Feminina</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <a class="brand-logo" onclick="switchView('store')">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 100 100" width="36" height="36" fill="none">
+                        <path d="M45 10 C45 4, 55 4, 55 10 C55 15, 60 15, 60 10 L85 10 C90 10, 90 15, 90 20 L90 40 C85 40, 85 50, 90 50 C95 50, 95 60, 90 60 L90 85 C90 90, 85 90, 80 90 L60 90 C60 85, 50 85, 50 90 C50 95, 40 95, 40 90 L15 90 C10 90, 10 85, 10 80 L10 60 C15 60, 15 50, 10 50 C5 50, 5 40, 10 40 L10 15 C10 10, 15 10, 20 10 Z" fill="#F472B6"/>
+                        <circle cx="35" cy="35" r="7" fill="#60A5FA"/>
+                        <circle cx="65" cy="65" r="7" fill="#FDE047"/>
+                        <path d="M30 65 Q 50 75 70 35" stroke="#4ADE80" stroke-width="4" stroke-linecap="round" fill="none"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="brand-title">
+                        Inclusão <span class="brand-badge">Atípica</span>
+                    </h1>
+                    <p class="brand-subtitle">Moda, Papelaria & Recursos com Sensibilidade</p>
+                </div>
+            </a>
+
+            <div class="nav-controls">
+                <button onclick="switchView('store')" class="btn btn-rose">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    <span>Loja</span>
+                </button>
+
+                <button onclick="toggleCart()" class="btn btn-cart">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                    <span>Carrinho</span>
+                    <span id="cartBadge" class="cart-badge hidden">0</span>
+                </button>
+
+                <button onclick="openAdminAuth()" class="btn btn-admin">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    <span>Admin</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        
+        <!-- STOREFRONT VIEW -->
+        <div id="storeView" style="display: flex; flex-direction: column; gap: 2.5rem;">
+            
+            <!-- Hero Banner -->
+            <div class="hero-banner">
+                <div class="hero-content">
+                    <span class="hero-tag">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        Coleção Inclusiva & Sensorial
+                    </span>
+                    <h2 class="hero-title">Acolhimento, Estilo e Amor à Neurodiversidade</h2>
+                    <p class="hero-desc">Roupas femininas sem etiquetas incômodas, acessórios de identificação com design delicado e brinquedos sensoriais desenvolvidos especialmente para mães e filhas atípicas.</p>
+                    <div class="hero-actions">
+                        <a href="#productsSection" class="btn btn-gradient">
+                            Explorar Coleção
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+                        </a>
+                        <a href="https://wa.me/5573981375362?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20loja%20inclusiva." target="_blank" class="btn btn-whatsapp">
+                            Falar no WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-img-box">
+                    <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=800&q=80" alt="Boné Temático Orgulho Autista">
+                </div>
+            </div>
+
+            <!-- Controls Bar (Search & Categories) -->
+            <div id="productsSection" class="controls-bar">
+                <div class="search-box">
+                    <svg class="search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <input type="text" id="searchInput" class="search-input" oninput="handleSearch()" placeholder="Buscar vestuário, acessórios...">
+                </div>
+
+                <div class="categories-group">
+                    <button onclick="setCategoryFilter('all')" id="cat-all" class="cat-btn active">Todos</button>
+                    <button onclick="setCategoryFilter('Vestuário')" id="cat-Vestuário" class="cat-btn">Vestuário</button>
+                    <button onclick="setCategoryFilter('Acessórios')" id="cat-Acessórios" class="cat-btn">Acessórios</button>
+                    <button onclick="setCategoryFilter('Brinquedos Sensoriais')" id="cat-Brinquedos Sensoriais" class="cat-btn">Brinquedos Sensoriais</button>
+                    <button onclick="setCategoryFilter('Papelaria')" id="cat-Papelaria" class="cat-btn">Papelaria</button>
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div id="productsGrid" class="products-grid">
+                <!-- Injected dynamically via JS -->
+            </div>
+        </div>
+
+        <!-- ADMIN DASHBOARD VIEW -->
+        <div id="adminView" class="hidden">
+            <div class="admin-dashboard">
+                <div class="admin-header">
+                    <div>
+                        <span style="font-size: 0.75rem; background: var(--rose-deep); color: #fff; padding: 3px 10px; border-radius: 20px; font-weight: 700;">PAINEL ADMIN</span>
+                        <h2 style="font-size: 1.8rem; margin-top: 6px;">Gestão de Estoque & Produtos</h2>
+                    </div>
+                    <div style="display: flex; gap: 0.75rem;">
+                        <button onclick="openProductModal()" class="btn btn-gradient">
+                            + Novo Produto
+                        </button>
+                        <button onclick="logoutAdmin()" class="btn" style="background: rgba(255,255,255,0.1); color: #fff;">
+                            Sair
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Admin Metrics -->
+                <div class="admin-metrics">
+                    <div class="metric-card">
+                        <div class="metric-title">Total de Produtos</div>
+                        <div id="metricTotal" class="metric-value">0</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-title">Valor do Estoque</div>
+                        <div id="metricStockValue" class="metric-value">R$ 0,00</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-title">Categorias Ativas</div>
+                        <div id="metricCategories" class="metric-value">0</div>
+                    </div>
+                </div>
+
+                <!-- Admin Products Table -->
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Categoria</th>
+                                <th>Preço</th>
+                                <th>Estoque</th>
+                                <th style="text-align: right;">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminTableBody">
+                            <!-- Injected dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Cart Drawer -->
+    <div id="cartDrawerOverlay" class="cart-drawer-overlay" onclick="toggleCart()"></div>
+    <div id="cartDrawer" class="cart-drawer">
+        <div class="cart-header">
+            <h3 style="font-size: 1.1rem; font-weight: 700;">Seu Carrinho de Compras</h3>
+            <button onclick="toggleCart()" style="border:none; background:none; cursor:pointer; font-size: 1.2rem;">&times;</button>
+        </div>
+        <div id="cartItemsList" class="cart-body">
+            <!-- Injected JS -->
+        </div>
+        <div class="cart-footer">
+            <div class="form-group" style="margin-bottom: 0.5rem;">
+                <label class="form-label">Endereço de Entrega</label>
+                <input type="text" id="cartAddressInput" class="form-input" placeholder="Rua, Número, Bairro, Cidade">
+            </div>
+
+            <div style="display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-muted);">
+                <span>Subtotal:</span>
+                <span id="cartSubtotal">R$ 0,00</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-muted);">
+                <span>Frete Simulado:</span>
+                <span style="color: var(--autism-green); font-weight: 700;">Grátis</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: 800; color: var(--rose-deep);">
+                <span>Total:</span>
+                <span id="cartTotal">R$ 0,00</span>
+            </div>
+
+            <button onclick="checkoutWhatsApp()" class="btn btn-whatsapp" style="justify-content: center; padding: 0.9rem; border-radius: var(--radius-md); font-size: 1rem;">
+                Enviar Pedido pelo WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- Admin Login Modal 
+    <div id="adminAuthModal" class="modal-overlay">
+        <div class="modal-card">
+            <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem; text-align: center;">Acesso Restrito Administradora</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); text-align: center; margin-bottom: 1.5rem;">Informe sua senha de acesso para gerenciar o catálogo.</p>
+            
+            <form onsubmit="handleAdminLogin(event)">
+                <div class="form-group">
+                    <label class="form-label">Senha de Acesso</label>
+                    <input type="password" id="adminPassInput" class="form-input" placeholder="••••••••" required>
+                </div>
+                <div id="loginError" style="color: var(--rose-deep); font-size: 0.8rem; margin-bottom: 1rem; display: none; text-align: center;">Senha incorreta!</div>
+                <div style="display: flex; gap: 0.75rem;">
+                    <button type="button" onclick="closeAdminAuth()" class="btn" style="flex:1; background: #E2E8F0;">Cancelar</button>
+                    <button type="submit" class="btn btn-gradient" style="flex:1; justify-content: center;">Entrar</button>
+                </div>
+            </form>
+        </div>
+    </div>-->
+    <!-- Admin Login Modal -->
+    <div id="adminAuthModal" class="modal-overlay">
+        <div class="modal-card">
+            <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem; text-align: center;">Acesso Restrito Administradora</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); text-align: center; margin-bottom: 1.5rem;">Informe sua senha de acesso para gerenciar o catálogo.</p>
+            
+            <form onsubmit="handleAdminLogin(event)">
+                <div class="form-group">
+                    <label class="form-label">Senha de Acesso</label>
+                    <input type="password" id="adminPassInput" class="form-input" placeholder="••••••••" required>
+                </div>
+                <div id="loginError" style="color: var(--rose-deep); font-size: 0.8rem; margin-bottom: 1rem; display: none; text-align: center;">Senha incorreta!</div>
+                <div style="display: flex; gap: 0.75rem;">
+                    <button type="button" onclick="closeAdminAuth()" class="btn" style="flex:1; background: #E2E8F0;">Cancelar</button>
+                    <button type="submit" class="btn btn-gradient" style="flex:1; justify-content: center;">Entrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Product Modal (Add / Edit) with Image Upload & URL Support -->
+    <div id="productModal" class="modal-overlay">
+        <div class="modal-card">
+            <h3 id="productModalTitle" style="font-size: 1.3rem; margin-bottom: 1rem;">Novo Produto</h3>
+            <form id="productForm" onsubmit="saveProduct(event)">
+                <input type="hidden" id="prodId">
+                
+                <div class="form-group">
+                    <label class="form-label">Nome do Produto</label>
+                    <input type="text" id="prodName" class="form-input" required placeholder="Ex: Boné Temático Orgulho Autista">
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label class="form-label">Preço (R$)</label>
+                        <input type="number" step="0.01" id="prodPrice" class="form-input" required placeholder="59.90">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Categoria</label>
+                        <select id="prodCategory" class="form-select">
+                            <option value="Vestuário">Vestuário</option>
+                            <option value="Acessórios">Acessórios</option>
+                            <option value="Brinquedos Sensoriais">Brinquedos Sensoriais</option>
+                            <option value="Papelaria">Papelaria</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Image Input Choice: URL or File Upload -->
+                <div class="form-group">
+                    <label class="form-label">URL da Imagem</label>
+                    <input type="url" id="prodImageUrl" class="form-input" placeholder="https://exemplo.com/foto.jpg">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">OU Enviar Foto do Computador (Upload Local)</label>
+                    <input type="file" id="prodImageFile" accept="image/*" class="form-input" onchange="handleImageFileUpload(event)">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Descrição do Produto</label>
+                    <textarea id="prodDesc" class="form-textarea" rows="3" required placeholder="Detalhes, tecido, características de conforto sensorial..."></textarea>
+                </div>
+
+                <div style="display: flex; gap: 0.75rem; margin-top: 1rem;">
+                    <button type="button" onclick="closeProductModal()" class="btn" style="flex:1; background: #E2E8F0;">Cancelar</button>
+                    <button type="submit" class="btn btn-gradient" style="flex:1; justify-content: center;">Salvar Produto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div>
+                <strong style="color: var(--rose-deep); font-size: 1.1rem;">Inclusão Atípica</strong>
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">&copy; 2026 - Conectando estilo, afeto e respeito à neurodiversidade.</p>
+            </div>
+            <a href="https://wa.me/5573981375362" target="_blank" class="btn btn-whatsapp" style="font-size: 0.85rem;">
+                WhatsApp: (73) 98137-5362
+            </a>
+        </div>
+    </footer>
+
+    <script src="./js/index.js"></script>
+</body>
+</html>
